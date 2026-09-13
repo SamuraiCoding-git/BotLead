@@ -35,6 +35,7 @@
 html,
 body {
   height: 100%;
+  overflow: hidden; /* the single scroll owner is .screen, not the document */
 }
 
 body {
@@ -48,10 +49,11 @@ body {
 }
 
 #root {
-  min-height: 100vh;
-  min-height: 100dvh;
+  height: 100vh;
+  height: 100dvh;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 h1,
@@ -86,6 +88,14 @@ a {
   min-height: 52px;
 }
 
+/**
+ * .screen is a fixed-size viewport, never scrolls itself. Each screen
+ * component owns exactly one flex:1 child that scrolls internally if its
+ * content doesn't fit — this is what lets Result show a footer CTA that
+ * can never be scrolled away, while Question/Onboarding/Offer still fall
+ * back to their own vertical scroll on very small phones instead of
+ * clipping content.
+ */
 .screen {
   flex: 1;
   display: flex;
@@ -93,7 +103,8 @@ a {
   width: 100%;
   max-width: 560px;
   margin: 0 auto;
-  padding: calc(24px + var(--safe-top)) 20px calc(24px + var(--safe-bottom));
+  overflow: hidden;
+  padding: calc(16px + var(--safe-top)) 18px calc(14px + var(--safe-bottom));
 }
 
 .disclaimer {

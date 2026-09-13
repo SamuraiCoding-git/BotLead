@@ -16,22 +16,16 @@ export default function Onboarding({ status, progress, onStart, onResume, onView
       <div className={styles.top}>
         <div className={styles.eyebrowless} aria-hidden="true" />
         <h1 className={styles.headline}>
-          У каждого есть сценарий, который <em>включается без спроса</em> — в конфликте, в тишине, в решающий момент
+          Сценарий, который <em>включается без спроса</em>
         </h1>
         <p className={styles.subhead}>
-          12 вопросов помогут заметить паттерн, который годами управляет вашими реакциями — в отношениях, на работе и
-          наедине с собой.
+          12 вопросов помогут заметить паттерн, который годами управляет вашими реакциями.
         </p>
 
-        <div className={styles.meta}>
-          <div className={styles.metaItem}>
-            <span className={styles.metaValue}>3 мин</span>
-            <span className={styles.metaLabel}>на прохождение</span>
-          </div>
-          <div className={styles.metaItem}>
-            <span className={styles.metaValue}>12</span>
-            <span className={styles.metaLabel}>вопросов</span>
-          </div>
+        <div className={styles.chips}>
+          <span className={styles.chip}>3 минуты</span>
+          <span className={styles.chip}>12 вопросов</span>
+          <span className={styles.chip}>Без регистрации</span>
         </div>
 
         {status === "in-progress" && (

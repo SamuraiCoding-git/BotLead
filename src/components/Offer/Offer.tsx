@@ -26,45 +26,45 @@ export default function Offer({ productKey, offerDeadline, onRestart }: Props) {
 
   return (
     <div className={styles.wrap}>
-      <div>
-        <span className={styles.eyebrow}>Практический протокол</span>
+      <div className={styles.scrollArea}>
+        <span className={styles.eyebrow}>Что делать дальше</span>
         <h1 className={styles.title}>{product.title}</h1>
-      </div>
 
-      <div className={styles.card}>
         <ul className={styles.bullets}>
           {product.bullets.map((bullet, i) => (
             <li key={i}>{bullet}</li>
           ))}
         </ul>
 
-        <div className={styles.priceRow}>
-          <span className={styles.price}>
-            {price} {product.currency}
-          </span>
-          {!expired && (
-            <span className={styles.oldPrice}>
-              {product.fullPrice} {product.currency}
-            </span>
-          )}
-        </div>
+        <p className={styles.objection}>
+          Оплата через Lava.top. Доступ открывается сразу после оплаты — без ожидания и без консультаций.
+        </p>
 
-        {offerDeadline !== null && <Timer deadline={offerDeadline} />}
+        <p className={`disclaimer ${styles.disclaimer}`}>{disclaimer}</p>
+
+        <button className={styles.restart} onClick={onRestart}>
+          Пройти тест заново
+        </button>
       </div>
 
-      <button className={`${styles.cta} tap-target`} onClick={handleCta}>
-        Получить протокол за {price} {product.currency}
-      </button>
-
-      <p className={styles.objection}>
-        Оплата через Lava.top. Доступ к протоколу открывается сразу после оплаты — без ожидания и без консультаций.
-      </p>
-
-      <p className="disclaimer">{disclaimer}</p>
-
-      <button className={styles.restart} onClick={onRestart}>
-        Пройти тест заново
-      </button>
+      <div className={styles.footer}>
+        {offerDeadline !== null && <Timer deadline={offerDeadline} />}
+        <div className={styles.priceRow}>
+          <div className={styles.priceBlock}>
+            <span className={styles.price}>
+              {price} {product.currency}
+            </span>
+            {!expired && (
+              <span className={styles.oldPrice}>
+                {product.fullPrice} {product.currency}
+              </span>
+            )}
+          </div>
+          <button className={`${styles.cta} tap-target`} onClick={handleCta}>
+            Получить протокол
+          </button>
+        </div>
+      </div>
     </div>
   );
 }

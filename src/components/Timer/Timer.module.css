@@ -2,20 +2,20 @@
   display: flex;
   align-items: baseline;
   justify-content: center;
-  gap: 8px;
-  padding: 10px 16px;
+  gap: 7px;
+  padding: 7px 12px;
   border-radius: var(--radius-sm);
   background: var(--ink-800);
 }
 
 .label {
-  font-size: 13px;
+  font-size: 12px;
   color: var(--paper-dim);
 }
 
 .value {
   font-family: var(--font-display);
-  font-size: 18px;
+  font-size: 15px;
   font-variant-numeric: tabular-nums;
   color: var(--sage-bright);
 }
